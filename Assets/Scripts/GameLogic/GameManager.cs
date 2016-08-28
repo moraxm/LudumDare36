@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     public UnityEvent onStartShowingStructure;
 
     [Header("Playing")]
+    public Transform structureUndonePrefab;
+    public Transform structureUndonePosition;
     public Transform detectorPosition;
     public UnityEvent onStartPlaying;
 
@@ -95,5 +97,14 @@ public class GameManager : MonoBehaviour {
     public void StartGame()
     {
 
+    }
+
+    public void ResetGame()
+    {
+        Vector3 pos = structureUndonePosition.position;
+        Destroy(structureUndonePosition.gameObject);
+        structureUndonePosition = Instantiate(structureUndonePrefab);
+        structureUndonePosition.position = pos;
+        
     }
 }
