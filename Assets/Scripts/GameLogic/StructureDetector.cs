@@ -24,17 +24,19 @@ public class StructureDetector : MonoBehaviour {
 
 	}
 
-    private void Compare()
+    public bool Compare()
     {
         Debug.Log("Comparing...");
         if (m_structure != null && m_structure2 != null)
         {
             bool equals = m_structure.Equals(m_structure2);
             Debug.Log(equals);
+            return equals;
         }
+        return false;
     }
 
-    void Scan()
+    public void Scan()
     {
         Debug.Log("Scanning...");
         Vector3 boxSize = transform.localScale * 0.5f;

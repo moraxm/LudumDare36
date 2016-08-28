@@ -28,11 +28,13 @@ public class DragableWithMouse : MonoBehaviour
     public void OnMouseUp()
     {
         m_rigidBody.isKinematic = false;
+        m_rigidBody.GetComponent<Collider>().enabled = true;
     }
 
     public void OnMouseDrag()
     {
         m_rigidBody.isKinematic = true;
+        m_rigidBody.GetComponent<Collider>().enabled = false;
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 1;
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
