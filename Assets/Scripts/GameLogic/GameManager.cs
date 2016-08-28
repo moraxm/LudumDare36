@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour {
 
     private void PlayingUpdate()
     {
-        
+        messageComponent.SetMessage("Use the mouse to move pieces", 1);
     }
 
     private void ShowingStructureUpdate()
