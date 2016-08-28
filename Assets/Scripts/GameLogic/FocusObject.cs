@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class FocusObject : MonoBehaviour
 {
@@ -14,14 +15,9 @@ public class FocusObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        m_targetTexture = GetComponent<Camera>().targetTexture;
-        GetComponent<Camera>().targetTexture = null;
         enabled = false;
         //transform.position = target.position + target.forward * startOffset;
-        m_targetPosition = getCenterPosition(target);
-        Vector3 direction = m_targetPosition -transform.position;
-        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
-        m_radius = direction.magnitude;
+        
     }
 
     private Vector3 getCenterPosition(Transform parent)
@@ -43,6 +39,12 @@ public class FocusObject : MonoBehaviour
     public void StartFocusMove()
     {
         enabled = true;
+        m_targetTexture = GetComponent<Camera>().targetTexture;
+        GetComponent<Camera>().targetTexture = null;
+        m_targetPosition = getCenterPosition(target);
+        Vector3 direction = m_targetPosition - transform.position;
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        m_radius = direction.magnitude;
     }
 
     public void EndFocusMove()
@@ -58,6 +60,7 @@ public class FocusObject : MonoBehaviour
 
         // Set Target texture for ui
         GetComponent<Camera>().targetTexture = m_targetTexture;
+
     }
 
     // Update is called once per frame
