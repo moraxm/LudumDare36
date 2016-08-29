@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour {
 
     private void PlayingUpdate()
     {
-        messageComponent.SetMessage("Use the mouse to move pieces", 1);
+        
     }
 
     private void ShowingStructureUpdate()
@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour {
             m_gameState = GameState.PLAYING;
             onStartPlaying.Invoke();
             detector.transform.position = detectorPosition.position;
+            messageComponent.SetMessage("Use the mouse to move pieces", 6);
         }
     }
 
